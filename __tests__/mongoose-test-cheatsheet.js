@@ -4,10 +4,10 @@
  * This file contains examples and patterns for testing Mongoose models.
  * Use this as a reference when writing your tests.
  */
+import { MongoMemoryServer } from "mongodb-memory-server";
+import mongoose from "mongoose";
+import { beforeAll, afterAll, afterEach, describe, it, expect } from "vitest";
 
-const { MongoMemoryServer } = require("mongodb-memory-server");
-const mongoose = require("mongoose");
-const { beforeAll, afterAll, afterEach, describe, it, expect } = require("vitest");
 
 // ==========================================
 // 1. Test Database Setup
