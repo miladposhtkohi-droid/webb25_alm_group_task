@@ -1,0 +1,212 @@
+{
+  "info": {
+    "name": "Webb25 ALM API",
+    "description": "API Collection for User and Accommodation Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "user_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "accommodation_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"john_doe\",\n  \"email\": \"john@example.com\",\n  \"profileImage\": \"https://example.com/john.jpg\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": ["{{base_url}}"],
+              "path": ["users"]
+            },
+            "description": "Create a new user with username, email, and profile image"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": ["{{base_url}}"],
+              "path": ["users"]
+            },
+            "description": "Retrieve all users in the system"
+          },
+          "response": []
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["users", "{{user_id}}"]
+            },
+            "description": "Retrieve a specific user by their ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"john_updated\",\n  \"email\": \"john_updated@example.com\",\n  \"profileImage\": \"https://example.com/john_updated.jpg\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["users", "{{user_id}}"]
+            },
+            "description": "Update user information"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["users", "{{user_id}}"]
+            },
+            "description": "Delete a user (this will cascade delete all their accommodations)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Accommodations",
+      "item": [
+        {
+          "name": "Create Accommodation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"Test Street 1\",\n  \"city\": \"Stockholm\",\n  \"country\": \"Sweden\",\n  \"postalCode\": \"11122\",\n  \"rent\": 12000,\n  \"rooms\": 3,\n  \"userId\": \"{{user_id}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/accommodations",
+              "host": ["{{base_url}}"],
+              "path": ["accommodations"]
+            },
+            "description": "Create a new accommodation. Requires a valid user_id."
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Accommodations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/accommodations",
+              "host": ["{{base_url}}"],
+              "path": ["accommodations"]
+            },
+            "description": "Retrieve all accommodations in the system"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Accommodation by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/accommodations/{{accommodation_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["accommodations", "{{accommodation_id}}"]
+            },
+            "description": "Retrieve a specific accommodation by its ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Accommodation",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"Updated Street 1\",\n  \"city\": \"Stockholm\",\n  \"country\": \"Sweden\",\n  \"postalCode\": \"11122\",\n  \"rent\": 15000,\n  \"rooms\": 4,\n  \"userId\": \"{{user_id}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/accommodations/{{accommodation_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["accommodations", "{{accommodation_id}}"]
+            },
+            "description": "Update accommodation information"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Accommodation",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/accommodations/{{accommodation_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["accommodations", "{{accommodation_id}}"]
+            },
+            "description": "Delete a specific accommodation"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
